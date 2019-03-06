@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 
-const AddUserForm = props => {
+const EditUserForm = props => {
 
-    const initialFormState = {id: null, name: '', username: '' };
-    const [user, setUser] = useState(initialFormState);
+    const [user, setUser] = useState(props.currentUser);
 
     const handleInputChange = e => {
         const  {name, value } = e.target;
@@ -14,18 +13,17 @@ const AddUserForm = props => {
         <form
         onSubmit={ event => {
             event.preventDefault();
-            if(!user.name || !user.username) return
-            props.addUser(user);
-            setUser(initialFormState);
+            props.updateUser(user.id, user)
         }}
         >
             <label>Name</label>
             <input type="text" name="name" value={user.name} onChange={handleInputChange} />
             <label>Username</label>
             <input type="text" name="username" value={user.username} onChange={handleInputChange} />
-            <button>Add user</button>
+            <button>Update</button>
+            <button onClick={() => props.setEditing(false)} className="button muted-button" >Cancel</button>
         </form>
     );
 }
 
-export default AddUserForm;
+export default EditUserForm;
