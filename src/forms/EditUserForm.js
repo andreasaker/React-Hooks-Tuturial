@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 
 const EditUserForm = props => {
 
@@ -8,6 +8,13 @@ const EditUserForm = props => {
         const  {name, value } = e.target;
         setUser({...user, [name]: value});
     }
+
+    useEffect(
+        () => {
+            setUser(props.currentUser);
+        },
+        [props]
+    );
 
     return(
         <form

@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState} from 'react';
 import UserTable from './tables/UserTable';
 import AddUserForm from './forms/AddUserForm';
 import EditUserForm from './forms/EditUserForm';
